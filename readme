@@ -17,3 +17,7 @@
    query_set.filter().filter().order_by()
    ```
 3. There are some method we will directly get the query. For example `count = Product.objects.count()` return number
+
+## Retrieve Objects
+
+1. `product = Product.objects.get(pk=1)`
