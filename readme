@@ -1,0 +1,19 @@
+# Django ORM
+
+1. to start up a local first thing we need to do `pipenv install` to create virtual environment and install all the app
+2. active virtual env , `pipenv shell`
+3. check sql connection config, create database in mysql
+4. run migration
+
+### Query_set
+
+1. Query_set encalsulate the query, it will only execute when
+   - we iterate it
+   - when we convert it into list(query_set)
+   - when we slice it, or access specific element
+2. The reason for doing this, is because we can use queryset to build complex queries, to save the memories
+   ```
+   query_set = Product.objects.all()
+   query_set.filter().filter().order_by()
+   ```
+3. There are some method we will directly get the query. For example `count = Product.objects.count()` return number
