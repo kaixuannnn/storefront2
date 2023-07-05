@@ -66,3 +66,7 @@
 
 1. When we want to access the related table data, we need to use `select_related(collection__someOtherField)`
 2. we use `select_related` when the other end of relationship has only one object, whereas we use `prefetch_related` when the other end of relationship has many objects8
+
+## Aggregate
+
+1. `result = product.objects.aggregate(count=Count('id'), min_price=Min('unit_price'))`
