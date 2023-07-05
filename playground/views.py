@@ -12,6 +12,6 @@ def say_hello(request):
     # We can use filter, as it return querySet and when we ask for first, it will return null
     # product = Product.objects.filter(pk=0).first()
     # we also can check the existence of the object
-    query_set = Product.objects.filter(inventory=F('collection__id'))
+    query_set = Product.objects.order_by('-title')
     
     return render(request, 'hello.html', {'name': 'Mosh', 'products': list(query_set)})

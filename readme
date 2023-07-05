@@ -41,3 +41,9 @@
 
 1. Sometimes, we want to refer to the field, for example
    - inventory = price
+
+## Sorting
+
+1. `query_set = Product.objects.order_by('unit_price','-title')`, `-` sign indicates in descending order, we can sort by 2 keywords
+2. add `reverse()`, will reverse the order
+3. we can get the first object by using `earliest()`, whereas we can get the latest object by using `latest`
