@@ -29,3 +29,15 @@
 3. We can use lookup type also, `product = Product.objects.filter(unit_price__gt=5)`, we also have `gte, lte, lt`
 4. There are some lookups type that require more than 2 valus, `product= Product.objects.range(20, 30)`
 5. for more lookup type can refer to Django ORM website
+
+## Q Objects
+
+1. Some we want to execute some complex query like AND, OR, therefore we can use Q object and use the bitwise operator
+2. Q objects will encapsulate the keyword argument
+3. Example `query_set = Product.objects.filter(Q(title__icontains='coffee') & ~Q(title__icontains='oz'))`
+4. `~` represents NOT operator
+
+## F Objects
+
+1. Sometimes, we want to refer to the field, for example
+   - inventory = price
