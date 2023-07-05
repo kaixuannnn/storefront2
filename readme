@@ -51,3 +51,7 @@
 ## Limiting Results
 
 1. `queryset = Product.objects.all()[:5]`, will return the first 5 objects, `[5:10]`, skipping the first 5 objects, and return subsequent object before 10
+
+## Selecting Field for Query
+
+1. Sometimes, we need to only query specific fields, `queryset = Product.objects.values('id', 'title','collection__title')`, by using values(), instead of getting a bunch of instances, we will get a bunch of dictionary, whereas, `values_list()` will return a bunch of tuples

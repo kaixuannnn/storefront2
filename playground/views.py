@@ -1,17 +1,10 @@
 from django.shortcuts import render
 from django.db.models import Q, F
-from store.models import Product
+from store.models import Product, OrderItem
 
 
 def say_hello(request):
-    # We can do this way to retrieve object, however we need to do error handling, therefore
-    # try: 
-    #     product = Product.objects.get(pk=0)
-    # except ObjectDoesNotExist:
-    #     pass
-    # We can use filter, as it return querySet and when we ask for first, it will return null
-    # product = Product.objects.filter(pk=0).first()
-    # we also can check the existence of the object
-    query_set = Product.objects.order_by('-title')
-    
-    return render(request, 'hello.html', {'name': 'Mosh', 'products': list(query_set)})
+   # Exersice: We want to find the list of product which had been ordered and sort by title
+   # distinct() - to eliminate redundant record
+   query_set =  Product.objects.filter(id__in = OrderItem.objects.values_list('product__id').distinct()).order_by('title')
+   return render(request, 'hello.html', {'name': 'Mosh', 'products': list(query_set)})
