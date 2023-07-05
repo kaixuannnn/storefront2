@@ -55,3 +55,9 @@
 ## Selecting Field for Query
 
 1. Sometimes, we need to only query specific fields, `queryset = Product.objects.values('id', 'title','collection__title')`, by using values(), instead of getting a bunch of instances, we will get a bunch of dictionary, whereas, `values_list()` will return a bunch of tuples
+
+## Defering Field
+
+1. `queryset = Product.objects.only('id', 'title')`, we will get the product instance which only have id and title field
+2. difference between `only` and `values`, which former get the product instances, and the later get dictionary of product list
+3. `defer`, we want to query all the field, except some selected filed
