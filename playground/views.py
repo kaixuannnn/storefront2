@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from store.models import Product
-from django.db.models import Count
+from store.models import Customer
+from django.db.models import Value, F
 
 def say_hello(request):
-   result = Product.objects.aggregate(count=Count('id'))
-   return render(request, 'hello.html', {'name': 'Mosh', 'result': result})
+   queryset = Customer.objects.annotate(new_id=F('id')+1)
+   return render(request, 'hello.html', {'name': 'Mosh', 'products': queryset})

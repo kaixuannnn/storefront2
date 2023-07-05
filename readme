@@ -70,3 +70,7 @@
 ## Aggregate
 
 1. `result = product.objects.aggregate(count=Count('id'), min_price=Min('unit_price'))`
+
+## Anotate
+
+1. Need to understand the query expression object
