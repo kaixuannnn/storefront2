@@ -74,3 +74,8 @@
 ## Anotate
 
 1. Need to understand the query expression object
+
+## Database Functions
+
+1. `queryset = Customer.objects.annotate(full_name=Concat('first_name',' ', 'last_name'))`
+2. `queryset = Customer.objects.annnotate(full_name=Func(F('first_name'), Value(' '), F('last_name'), funtion='CONCAT'))`
