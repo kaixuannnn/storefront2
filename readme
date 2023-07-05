@@ -61,3 +61,8 @@
 1. `queryset = Product.objects.only('id', 'title')`, we will get the product instance which only have id and title field
 2. difference between `only` and `values`, which former get the product instances, and the later get dictionary of product list
 3. `defer`, we want to query all the field, except some selected filed
+
+## select_related
+
+1. When we want to access the related table data, we need to use `select_related(collection__someOtherField)`
+2. we use `select_related` when the other end of relationship has only one object, whereas we use `prefetch_related` when the other end of relationship has many objects8
