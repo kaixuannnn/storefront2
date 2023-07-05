@@ -47,3 +47,7 @@
 1. `query_set = Product.objects.order_by('unit_price','-title')`, `-` sign indicates in descending order, we can sort by 2 keywords
 2. add `reverse()`, will reverse the order
 3. we can get the first object by using `earliest()`, whereas we can get the latest object by using `latest`
+
+## Limiting Results
+
+1. `queryset = Product.objects.all()[:5]`, will return the first 5 objects, `[5:10]`, skipping the first 5 objects, and return subsequent object before 10
