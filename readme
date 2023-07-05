@@ -21,3 +21,11 @@
 ## Retrieve Objects
 
 1. `product = Product.objects.get(pk=1)`
+
+## Filter
+
+1. `keyword=value`
+2. `product = Product.objecs.filter(pk=1)`, we filter product based on id
+3. We can use lookup type also, `product = Product.objects.filter(unit_price__gt=5)`, we also have `gte, lte, lt`
+4. There are some lookups type that require more than 2 valus, `product= Product.objects.range(20, 30)`
+5. for more lookup type can refer to Django ORM website
