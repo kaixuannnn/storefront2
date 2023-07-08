@@ -132,3 +132,7 @@ def say_hello(request):
 ```
 
 2. When there is error inside the code, the whole code wont excuted and will return an error
+
+## DjangoModelAdmin
+
+1. We can see what can django admin do by searching ModelAdmin options
