@@ -84,3 +84,28 @@
 
 1. First, we need to query the content type id based on the model, in this case we need to find the contenttype id of Product Model in database table (django_content_type)
 2. After that, we can query the generic item based on the content type, in this case we want to find product type taggedItem which product id is 1.
+
+## Create Objects
+
+1. ```
+   collection = Collection()
+      collection.name = 'Video Games'
+      collection.featured_product = Product(pk=1)
+      collection.save()
+   ```
+   ```
+   collection = Collection.objects.create(name='a', featured_product_id=1)
+   collection.id
+   // you can retrieve the collection id after creation
+   ```
+2. Code above demonstrated how to create a new object
+
+## Update Objects
+
+1. ```
+   Collection.objects.filter(pk=11).update(featured_product=None)
+   ```
+
+```
+
+```
