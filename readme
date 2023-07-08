@@ -136,3 +136,9 @@ def say_hello(request):
 ## DjangoModelAdmin
 
 1. We can see what can django admin do by searching ModelAdmin options
+
+## AdminSite - Providing Links to Other Pages
+
+1. In this case, we want to get the admin page of Product, in this case, we can use reverse method
+2. `reverse('admin:app_model_page')`, in this case, we use `reverse('admin:store_collection_changelist')`
+3. for the url, we need to add the querystring '?' in order to go into specific page
