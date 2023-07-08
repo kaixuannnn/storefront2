@@ -106,6 +106,29 @@
    Collection.objects.filter(pk=11).update(featured_product=None)
    ```
 
-```
+## Transaction
+
+1. Sometimes, we want the code to run in on times, if one of the code is error, the previous code will roll back.
 
 ```
+from django.db import transaction
+
+// @transaction.atomic()
+//this will wrap the entire function, in this transaction
+def say_hello(request):
+   #...
+   // this return the context manager
+   with transaction.atomic():
+      order = Order()
+      order.customer_id = 1
+      order.save()
+
+      item = OrderItem()
+      item.order = order
+      item.product_id = 1
+      item.quantity = 1
+      item.unit_price = 10
+      item.save()
+```
+
+2. When there is error inside the code, the whole code wont excuted and will return an error
