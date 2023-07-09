@@ -2,10 +2,13 @@ from typing import Any, List, Optional, Tuple
 from django.contrib import admin, messages
 from django.db.models.query import QuerySet
 from django.http.request import HttpRequest
+
+from tags.models import TaggedItem
 from . import models
 from django.db.models import Count
 from django.utils.html import format_html, urlencode
 from django.urls import reverse
+from django.contrib.contenttypes.admin import GenericTabularInline
 
 class InventoryFilter(admin.SimpleListFilter):
     title = 'inventory'
@@ -35,6 +38,10 @@ class CollectionAdmin(admin.ModelAdmin):
             products_count=Count('product')
         )
 
+class TagInline(GenericTabularInline):
+    model = TaggedItem
+    autocomplete_fields = ['tag']
+
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     autocomplete_fields = ['collection']
@@ -42,12 +49,14 @@ class ProductAdmin(admin.ModelAdmin):
         'slug': ['title']
     }
     actions = ['clear_inventory']
+    inlines = [TagInline]
     list_display = ['title', 'unit_price', 'inventory_status', 'collection_title']
     list_editable = ['unit_price']
     list_filter = ['collection', 'last_update', InventoryFilter]
     list_per_page = 10
     list_select_related = ['collection']
     search_fields = ['title']
+
 
     def collection_title(self, product):
         return product.collection.title
