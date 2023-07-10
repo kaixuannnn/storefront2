@@ -142,3 +142,7 @@ def say_hello(request):
 1. In this case, we want to get the admin page of Product, in this case, we can use reverse method
 2. `reverse('admin:app_model_page')`, in this case, we use `reverse('admin:store_collection_changelist')`
 3. for the url, we need to add the querystring '?' in order to go into specific page
+
+## Install DjangoRestFramework
+
+1. `pipenv install djangorestframework`
