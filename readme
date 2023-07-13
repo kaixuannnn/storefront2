@@ -157,3 +157,7 @@ def say_hello(request):
         queryset = Collection.objects.all()
     )
 ```
+
+## Model Serializer
+1. In order to keep code dry, we need to use model serializer, to avoid repeating validation
+2. If we want to customize the serializer, we can use the method we used as before
