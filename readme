@@ -149,3 +149,11 @@ def say_hello(request):
 
 ## Serializer
 1. use to convert python model into dictionary
+
+## Serialzing relationship
+1. to serialize the select_related object, in this case we can get all the collection primary key
+```
+  collection = serializers.PrimaryKeyRelatedField(
+        queryset = Collection.objects.all()
+    )
+```
