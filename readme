@@ -146,3 +146,6 @@ def say_hello(request):
 ## Install DjangoRestFramework
 
 1. `pipenv install djangorestframework`
+
+## Serializer
+1. use to convert python model into dictionary
