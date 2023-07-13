@@ -161,3 +161,8 @@ def say_hello(request):
 ## Model Serializer
 1. In order to keep code dry, we need to use model serializer, to avoid repeating validation
 2. If we want to customize the serializer, we can use the method we used as before
+
+## Deserializer
+1. Deserializer - opposite way of serializer, we use when we create object
+2. Before sending request, we should do data validation
+3. if valid, we will save the validated data
