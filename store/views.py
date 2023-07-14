@@ -13,7 +13,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Count
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.select_related('collection').all()
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
     def get_serializer_context(self):
@@ -26,13 +26,8 @@ class ProductViewSet(ModelViewSet):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-    
-class CollectionList(ListCreateAPIView):
+class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(products_count=Count('products')).all()
-    serializer_class = CollectionSerializer
-
-class CollectionDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Collection.objects.annotate(products_count=Count('products'))
     serializer_class = CollectionSerializer
 
     def delete(self, request, pk):
@@ -41,4 +36,7 @@ class CollectionDetail(RetrieveUpdateDestroyAPIView):
             return Response({'error': 'Collection cannot be deleted because it includes one or more products.'},status=status.HTTP_405_METHOD_NOT_ALLOWED)
         collection.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+   
      

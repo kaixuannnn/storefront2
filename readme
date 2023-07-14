@@ -186,3 +186,4 @@ For example, when we want to some user to use different queryset
 
 ## ViewSet
 1. As you can see the queryset and serializer_class are duplicated in generic view, in order to solve this problem, we can use ModelViewSet
+2. We can also inherit `ReadOnlyModelViewSet`, which we can only execute readOnly method
