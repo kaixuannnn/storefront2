@@ -166,3 +166,6 @@ def say_hello(request):
 1. Deserializer - opposite way of serializer, we use when we create object
 2. Before sending request, we should do data validation
 3. if valid, we will save the validated data
+
+## ClassBasedView
+1. provide cleaner code, and more reuse ability
