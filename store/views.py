@@ -6,6 +6,7 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from store.filters import ProductFilter
 from store.models import OrderItem, Product, Collection, Review
+from store.pagination import DefaultPagination
 from store.serializers import CollectionSerializer, ProductSerializer, ReviewSerializer
 from django.db.models import Count
 
@@ -17,6 +18,8 @@ class ProductViewSet(ModelViewSet):
     filterset_class = ProductFilter
     search_fields = ['title', 'description']
     ordering_fields = ['unit_price', 'last_update']
+    # We can define the default pagination method inside setting
+    pagination_class = DefaultPagination
 
     def get_serializer_context(self):
         return {'request': self.request}

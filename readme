@@ -189,3 +189,15 @@ For example, when we want to some user to use different queryset
 ## ViewSet
 1. As you can see the queryset and serializer_class are duplicated in generic view, in order to solve this problem, we can use ModelViewSet
 2. We can also inherit `ReadOnlyModelViewSet`, which we can only execute readOnly method
+
+## Pagination
+1. There is various type of pagination provided by restframework, it will show out next, previous
+2. Type of Pagination can refer https://www.django-rest-framework.org/api-guide/pagination/
+3. We can set default Pagination in settings.py
+```
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+```
