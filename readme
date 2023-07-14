@@ -183,3 +183,6 @@ For example, when we want to some user to use different queryset
 
 ## Custom Generic View
 1. In this case, we need to keep the delete method as we want to keep the custom delete message
+
+## ViewSet
+1. As you can see the queryset and serializer_class are duplicated in generic view, in order to solve this problem, we can use ModelViewSet
