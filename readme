@@ -180,3 +180,6 @@ For example, when we want to some user to use different queryset
    def get_serializer(self, *args, **kwargs):
       return ProductSerializer
 ```
+
+## Custom Generic View
+1. In this case, we need to keep the delete method as we want to keep the custom delete message
