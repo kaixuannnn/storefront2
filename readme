@@ -169,3 +169,14 @@ def say_hello(request):
 
 ## ClassBasedView
 1. provide cleaner code, and more reuse ability
+
+## GenericView
+1. ListCreateAPIView
+2. In this case, we no need to use method as we no need to implement logic for the queryset and serializer
+For example, when we want to some user to use different queryset
+``` 
+   def get_queryset(self):
+      return Product.objects.select_related('collection').all()
+   def get_serializer(self, *args, **kwargs):
+      return ProductSerializer
+```
