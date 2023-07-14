@@ -201,3 +201,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 ```
+
+## Redefine our Cart Model
+1. In CartItem Model, we need to make sure that there is only one type of product inside one cart
+2. Therefore, we can do it by adding a meta class and define inside the Meta class
+```
+class Meta:
+        unique_together = [['cart', 'product']]
+```
