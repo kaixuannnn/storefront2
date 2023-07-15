@@ -6,9 +6,9 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from store.filters import ProductFilter
-from store.models import Cart, OrderItem, Product, Collection, Review
+from store.models import Cart, CartItem, OrderItem, Product, Collection, Review
 from store.pagination import DefaultPagination
-from store.serializers import CartSerializer, CollectionSerializer, ProductSerializer, ReviewSerializer
+from store.serializers import CartItemSerializer, CartSerializer, CollectionSerializer, ProductSerializer, ReviewSerializer
 from django.db.models import Count
 
 class ProductViewSet(ModelViewSet):
@@ -56,6 +56,11 @@ class CartViewSet(CreateModelMixin,
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
 
+class CartItemViewSet(ModelViewSet):
+    serializer_class = CartItemSerializer
+
+    def get_queryset(self):
+        return CartItem.objects.select_related('product').filter(cart_id=self.kwargs['cart_pk'])
 
    
      

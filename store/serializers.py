@@ -2,7 +2,6 @@ from rest_framework import serializers
 from decimal import Decimal
 
 from store.models import Cart, CartItem, Collection, Product, Review
-from django.db.models import Count
 
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
