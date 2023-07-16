@@ -8,7 +8,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from store.filters import ProductFilter
 from store.models import Cart, CartItem, OrderItem, Product, Collection, Review
 from store.pagination import DefaultPagination
-from store.serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, ProductSerializer, ReviewSerializer
+from store.serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
 from django.db.models import Count
 
 class ProductViewSet(ModelViewSet):
@@ -57,9 +57,12 @@ class CartViewSet(CreateModelMixin,
     serializer_class = CartSerializer
 
 class CartItemViewSet(ModelViewSet):
+    http_method_names = ['get', 'post', 'patch', 'delete']
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return AddCartItemSerializer
+        if self.request.method == 'PATCH':
+            return UpdateCartItemSerializer
         return CartItemSerializer
 
     def get_queryset(self):
