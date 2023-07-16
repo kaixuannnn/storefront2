@@ -209,3 +209,8 @@ REST_FRAMEWORK = {
 class Meta:
         unique_together = [['cart', 'product']]
 ```
+
+## Customizing the UserModel
+1. There is 2 types of customzing a UserModel, Inheritance and Composition
+2. Inheritance - for storing attributes related to authentication
+3. Composition - for storing non-auth related attributes
