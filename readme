@@ -214,3 +214,12 @@ class Meta:
 1. There is 2 types of customzing a UserModel, Inheritance and Composition
 2. Inheritance - for storing attributes related to authentication
 3. Composition - for storing non-auth related attributes
+
+## Adding Authentication Endpoints
+
+## Register User
+1. Inside settings.py, there is AUTH_PASSWORD_VALIATORS, there are a bunch of validators, for password
+
+## Create Profile
+1. We can make it 2 seperate endpoints, 1. create account 2. create profile
+2. 2 seperate calls, more reusable, easier to maintain
