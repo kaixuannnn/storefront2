@@ -258,3 +258,6 @@ def me(self, request):
 ## Model Permissions
 1. We create a customer history, and it can only be used for the particular custome
 2. So we need to create an action named history and receive pk, detail is True
+
+## Creating an Order
+1. Everyone can create an order, we only need to create an order id, and post the cart id

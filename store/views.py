@@ -11,7 +11,7 @@ from store.filters import ProductFilter
 from store.models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, Review
 from store.pagination import DefaultPagination
 from store.permissions import IsAdminOrReadOnly, ViewCustomerHistoryPermission
-from store.serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
+from store.serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
 from django.db.models import Count
 
 class ProductViewSet(ModelViewSet):
@@ -105,7 +105,15 @@ class CustomerViewSet(ModelViewSet):
         return Response('ok')
 
 class OrderViewSet(ModelViewSet):
-    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CreateOrderSerializer
+        return OrderSerializer
+
+    def get_serializer_context(self):
+        return {'user_id':self.request.user.id}
 
     def get_queryset(self):
         user = self.request.user
@@ -114,3 +122,4 @@ class OrderViewSet(ModelViewSet):
         
         (customer_id, created) = Customer.objects.only('id').get_or_create(user_id=user.id)
         return Order.objects.filter(customer_id=customer_id)
+    
