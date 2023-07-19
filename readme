@@ -268,3 +268,6 @@ def me(self, request):
 ## Return Created Order
 1. When create order, we serialize the request data, and save it to the database, after that, we need to deserialize the data, the data and return as response
 2. for the get_serializer_context, it is used for mixins, in this case, we customize the create, so it is not so usefult so this
+
+## Data Validation
+1. In this case, there is 2 scenario, invalid cartId, empty cart
