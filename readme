@@ -223,3 +223,16 @@ class Meta:
 ## Create Profile
 1. We can make it 2 seperate endpoints, 1. create account 2. create profile
 2. 2 seperate calls, more reusable, easier to maintain
+
+## Logging In
+1. 'refresh_token_lifetime' by default is 1 day, and access token by default is 5 minutes
+
+## Getting Current User Profile (customise action)
+1. new endpoint 'store/customer/me'
+2. we create a new method under CustomerViewSet, basically, the mixins that we inherit for the viewset are actually an action
+```
+@action(detail=FALSE)
+def me(self, request):
+```
+3. detail indicates whether we want it in list view or detail view
+4. In this case, we want to get the user id, how to get it? We have the middleware that will help to get the user information from the request, if the user is not logged in, it will be set as an anonymousUser instance
