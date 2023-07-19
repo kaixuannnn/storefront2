@@ -261,3 +261,6 @@ def me(self, request):
 
 ## Creating an Order
 1. Everyone can create an order, we only need to create an order id, and post the cart id
+
+## Create Order Items
+1. We need to get the cartItem from the cart id, and for each cart item, we need to create an order item and save it into database, lastly we want to delete the cart
