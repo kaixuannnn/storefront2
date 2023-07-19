@@ -271,3 +271,10 @@ def me(self, request):
 
 ## Data Validation
 1. In this case, there is 2 scenario, invalid cartId, empty cart
+
+## Signals
+1. In django, we use signals to decouple or apps and prevent them from stepping on each other toes
+2. pre_save, before the model is saved
+3. post_save, after a model is saved
+4. pre_delete, post_delete
+5. For example, CORE - Create User, Listen to User..post_save, STORE - create customer
