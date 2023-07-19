@@ -247,3 +247,6 @@ def me(self, request):
 ```
 3. 2nd way, we can do permissions in particular ViewSet, `permission_classes = [IsAuthenticated]`, 
 4. If we want to customise the permission, we can create a method too, `def get_permissions(self)`
+
+## Custom Permissions
+1. For product viewset, we want only admin can access create method, and andmin and others can only access read only method
