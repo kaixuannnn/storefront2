@@ -5,6 +5,7 @@ from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyM
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from store.filters import ProductFilter
 from store.models import Cart, CartItem, Customer, OrderItem, Product, Collection, Review
@@ -79,6 +80,13 @@ class CustomerViewSet(CreateModelMixin,
                       GenericViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+    permission_classes = [IsAuthenticated]
+
+    # In method, the permissions object should return in method
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
     @action(detail=False,methods=['GET', 'PUT'])
     def me(self, request):

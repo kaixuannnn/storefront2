@@ -236,3 +236,14 @@ def me(self, request):
 ```
 3. detail indicates whether we want it in list view or detail view
 4. In this case, we want to get the user id, how to get it? We have the middleware that will help to get the user information from the request, if the user is not logged in, it will be set as an anonymousUser instance
+
+## Permissions
+1. https://www.django-rest-framework.org/api-guide/permissions/
+2. 2 ways to implement, first we can set it in global way , in settings.py
+```
+'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+```
+3. 2nd way, we can do permissions in particular ViewSet, `permission_classes = [IsAuthenticated]`, 
+4. If we want to customise the permission, we can create a method too, `def get_permissions(self)`
