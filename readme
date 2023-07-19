@@ -278,3 +278,6 @@ def me(self, request):
 3. post_save, after a model is saved
 4. pre_delete, post_delete
 5. For example, CORE - Create User, Listen to User..post_save, STORE - create customer
+
+## Custom Signals
+1. When we successfully create an order, we can fire a signal like order created, with this other app interested in this event can subscribe to this signal and get notified
