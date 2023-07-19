@@ -10,7 +10,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from store.filters import ProductFilter
 from store.models import Cart, CartItem, Customer, OrderItem, Product, Collection, Review
 from store.pagination import DefaultPagination
-from store.permissions import IsAdminOrReadOnly
+from store.permissions import IsAdminOrReadOnly, ViewCustomerHistoryPermission
 from store.serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CustomerSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer
 from django.db.models import Count
 
@@ -99,3 +99,8 @@ class CustomerViewSet(ModelViewSet):
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data)
+        
+    @action(detail=True, permission_classes=[ViewCustomerHistoryPermission])
+    def history(self, request, pk):
+        return Response('ok')
+
