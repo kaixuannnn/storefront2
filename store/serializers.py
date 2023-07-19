@@ -131,6 +131,11 @@ class OrderSerializer(serializers.ModelSerializer):
     def get_total_price(self, order):
         return sum([item.quantity * item.product.unit_price for item in order.items.all()])
     
+class UpdateOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['payment_status']
+    
 class CreateOrderSerializer(serializers.Serializer):
     cart_id = serializers.UUIDField()
 
